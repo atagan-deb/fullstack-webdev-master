@@ -1,8 +1,8 @@
-<?php 
+<?php
 /*
  - isset
  変数が定義されていて、null以外の値の時にtrueを返す。
- 
+
  - empty
  issetがfalse、または値がfalsyな時にtrueを返す。
 
@@ -14,6 +14,57 @@
  NULL
  FALSE
 */
-
+$br = '<br>';
 $a = 0;
 $b = 1;
+$c = null;
+
+if (isset($a)) {
+  echo 'true';
+} else {
+  echo 'false';
+}
+echo $br;
+if (isset($b)) {
+  echo 'true';
+} else {
+  echo 'false';
+}
+echo $br;
+if (isset($c)) {
+  echo 'true';
+} else {
+  echo 'false';
+}
+echo $br;
+if (isset($d)) {
+  echo 'true';
+} else {
+  echo 'false';
+}
+echo $br;
+
+if (empty($a)) {
+  echo 'true';
+} else {
+  echo 'false';
+}
+echo $br;
+if (empty($b)) {
+  echo 'true';
+} else {
+  echo 'false';
+}
+echo $br;
+if (empty($c)) {
+  echo 'true';
+} else {
+  echo 'false';
+}
+echo $br;
+if (empty($d)) {
+  echo 'true';
+} else {
+  echo 'false';
+}
+echo $br;

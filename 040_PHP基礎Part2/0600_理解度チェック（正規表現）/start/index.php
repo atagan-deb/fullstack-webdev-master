@@ -21,7 +21,7 @@
 
 /**
  * 郵便番号
- * 
+ *
  * 001-0012 -> OK
  * 001-001 -> NG
  * 2.2-3042 -> NG
@@ -29,19 +29,58 @@
  * 124-56789 -> NG
  */
 
-
+$char = '124-5679';
+if (preg_match("/^\d{3}-\d{4}$/", $char, $result)) {
+  echo 'OK<br>';
+  print_r($result);
+} else {
+  echo 'NG';
+}
+echo '<br><br>';
 /**
  * Email
  * . _ - と半角英数字が可能
- * 
+ *
  * example000@gmail.com -> OK
  * example-0.00@gmail.com -> OK
  * example-0.00@ex.co.jp -> OK
  * example/0.00@ex.co.jp -> NG
  */
-
+$char = 'example-0.00@ex.co.jp';
+if (preg_match("/^[\w.\-]+@[\w\-]+\.[\w\.\-]+$/", $char, $result)) {
+  echo 'OK<br>';
+  print_r($result);
+} else {
+  echo 'NG';
+}
+echo '<br><br>';
 
 /**
  * HTML
  * 見出しタグ(h1~h6)の中身のみ取得してみよう。
  */
+
+
+
+$char = '-- 対象のHTML
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>見出し１</h1>
+    <h2>見出し２</h2>
+    <h3>見出し３</h3>
+    <header>ヘッダー</header>
+</body>
+</html>';
+if (preg_match_all("/<h[1-6]>(.+)<\/h[1-6]>/", $char, $result)) {
+  echo 'OK<br>';
+  // print_r($result);
+  print_r($result[count($result) - 1]);
+} else {
+  echo 'NG';
+}
+echo '<br><br>';

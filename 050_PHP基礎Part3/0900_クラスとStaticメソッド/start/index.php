@@ -1,4 +1,5 @@
 <?php
+
 /**
  * クラス内のthis
  */
@@ -6,6 +7,8 @@ class Person
 {
     private $name;
     public $age;
+    public static $whereTolive = 'earth';
+    public const whyNot = 'woo';
 
     function __construct($name, $age)
     {
@@ -15,17 +18,23 @@ class Person
 
     function hello() {
         echo 'hello, ' . $this->name;
+        echo static::bye() . '<br>';
+        echo static::$whereTolive . '<br>';
+        echo static::whyNot . '<br>';
         return $this;
     }
 
-    function bye() {
-        echo 'bye, ' . $this->name;
-        return $this;
+    static function bye() {
+        echo 'bye';
     }
 }
 
 $bob = new Person('Bob', 18);
-$bob->hello()->bye();
+$bob->hello();
+Person::bye(); // staticメソットは基本的にクラス名を用いて実行される
+echo Person::$whereTolive;
+echo Person::whyNot;
+// $bob->hello()->bye();
 
 // $tim = new Person('Tim', 32);
 // $tim->hello();

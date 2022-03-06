@@ -1,10 +1,11 @@
 <?php
+
 /**
  * クラス継承
  */
 class Person
 {
-    private $name;
+    protected $name;
     public $age;
     public const WHERE = 'Earth';
 
@@ -14,18 +15,39 @@ class Person
         $this->age = $age;
     }
 
-    function hello() {
+    function hello()
+    {
         echo 'hello, ' . $this->name;
         return $this;
     }
 
-    static function bye() {
+    static function bye()
+    {
         echo 'bye';
     }
 }
 
-$bob = new Person('Bob', 18);
+class Japanese extends Person
+{
+
+    function __construct($name, $age)
+    {
+        $this->name = $name;
+        $this->age = 30;
+    }
+    function hello()
+    {
+        echo 'hello, ' . $this->name;
+        return $this;
+    }
+}
+
+$bob = new Japanese('Bob', 18);
 $bob->hello();
+echo '<br>';
+$taro = new Japanese('太郎', 18);
+$taro->hello();
+echo $taro->age;
 // $bob->hello()->bye();
 
 // $tim = new Person('Tim', 32);

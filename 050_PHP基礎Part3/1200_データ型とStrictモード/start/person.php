@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace animal;
 
 abstract class Person
@@ -13,7 +13,7 @@ abstract class Person
         $this->age = $age;
     }
 
-    abstract function hello();
+    abstract function hello(): self;
 
     static function bye() {
         echo 'bye';
@@ -23,7 +23,7 @@ abstract class Person
 class Japanese extends Person {
 
     public static $WHERE = '日本';
-    
+
     function hello(): self {
         echo 'こんにちは、' . $this->name;
         return $this;

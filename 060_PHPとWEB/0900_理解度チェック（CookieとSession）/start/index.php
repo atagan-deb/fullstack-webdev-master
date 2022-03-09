@@ -18,19 +18,20 @@
 
 // Sessionを使った場合
 session_start();
-if (empty($_SESSION['VISIT_COUNT'])) {
-  $visit_count = 0;
+if (isset($_SESSION['VISIT_COUNT'])) {
+  $_SESSION['VISIT_COUNT']++;
 } else {
-  $visit_count = $_SESSION['VISIT_COUNT'];
+  $_SESSION['VISIT_COUNT'] = 1;
 }
-$_SESSION['VISIT_COUNT'] = $visit_count + 1;
-echo $_SESSION['VISIT_COUNT'];
+?>
+<h3>訪問回数は <?php echo $_SESSION['VISIT_COUNT']; ?> 回目です。</h3>
 
+<?php
 // Cookieを使った場合
-if (empty($_COOKIE['VISIT_COUNT'])) {
-  $visit_count = 0;
-} else {
-  $visit_count = $_COOKIE['VISIT_COUNT'];
+$visit_count = 1;
+if (isset($_COOKIE['VISIT_COUNT'])) {
+  $visit_count = $_COOKIE['VISIT_COUNT'] + 1;
 }
-setcookie('VISIT_COUNT', $visit_count + 1);
-echo $_COOKIE['VISIT_COUNT'] . '<br>';
+setcookie('VISIT_COUNT', $visit_count);
+?>
+<h3>訪問回数は <?php echo $visit_count; ?> 回目です。</h3>

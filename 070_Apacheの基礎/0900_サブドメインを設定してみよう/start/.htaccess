@@ -11,5 +11,10 @@ RewriteEngine On
 # /private/etc/hosts
 
 # wwwを削除
+RewriteCond %{HTTP_HOST} ^www\.dev\.local [NC]
+RewriteRule .? http://dev.local:8888%{REQUEST_URI} [R=301]
 
 # rewrite-test/vhostディレクトリをvhost.dev.localとする。
+RewriteCond %{HTTP_HOST} -vhost\.dev\.local [NC]
+RewriteCond %{REQUEST_URI} !^/apache/rewrite-test/vhost/
+RewriteRule (.*) vhost/$1

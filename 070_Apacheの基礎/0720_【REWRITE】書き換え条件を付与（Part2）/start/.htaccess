@@ -1,7 +1,11 @@
 RewriteEngine On
 
 # クエリパラメータ
+RewriteCond %{QUERY_STRING} p=(.+)&?
+RewriteRule rewrite-test/sub1 sub1/%1? [R]
 
 # ファイルやディレクトリが存在しない場合
-
-
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule rewrite-test/sub2/(.+) sub1/$1
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule rewrite-test/sub2/(.+) sub1/$1

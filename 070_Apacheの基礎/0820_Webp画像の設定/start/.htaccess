@@ -2,7 +2,12 @@
 
 # jpeg、またはjpg,png拡張子のファイルにアクセスがあった場合に
 # Webp拡張子の画像が存在する場合はそれを返す。
-# 
+#
 # 例）
 # http://localhost:8888/apache/rewrite-test/img/150.jpg
 # -> http://localhost:8888/apache/rewrite-test/img/150.webp
+
+AddType image/webp .webp
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond /Applications/MAMP/htdocs/fullstack-webdev-master/070_Apacheの基礎/rewrite-test/imgs/$1.webp -f
+RewriteRule /?imgs/(.*)\.(jpe?g|png) imgs/$1.webp
